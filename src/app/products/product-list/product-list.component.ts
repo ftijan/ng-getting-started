@@ -1,5 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../product';
 
 @Component({
   selector: 'pm-product-list',
@@ -12,7 +12,7 @@ export class ProductListComponent implements OnInit {
   imageMargin = 2;
   showImage = false;
   listFilter = 'cart';
-  products: any[] = [
+  products: Product[] = [
     {
       "productId": 2,
       "productName": "Garden Cart",
