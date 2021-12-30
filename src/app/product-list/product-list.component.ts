@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
   pageTitle = 'Product List';
+  imageWidth = 50;
+  imageMargin = 2;
+  showImage = false;
+  listFilter = 'cart';
   products: any[] = [
     {
       "productId": 2,
@@ -35,4 +40,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
 }
