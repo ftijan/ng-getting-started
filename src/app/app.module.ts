@@ -8,19 +8,23 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star/star.component';
+import { WelcomeComponent } from './home/welcome/welcome.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     ConvertToSpacesPipe,
-    StarComponent,    
+    StarComponent,
+    WelcomeComponent,
+    ProductDetailComponent,    
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
-    //AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
