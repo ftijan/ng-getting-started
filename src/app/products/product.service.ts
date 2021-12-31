@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, mergeMap, first  } from 'rxjs/operators';
 import { Product } from './product';
 
 @Injectable({
@@ -17,6 +17,13 @@ export class ProductService {
       tap(data => console.log("All: ", JSON.stringify(data))),
       catchError(this.handleError)
     );
+  }
+
+  getProduct(id: number): Observable<Product> {    
+    return this.getProducts().pipe(     
+      mergeMap(p => p),
+      first(product => product.productId === id)
+      );    
   }
 
   private handleError(err: HttpErrorResponse) {
