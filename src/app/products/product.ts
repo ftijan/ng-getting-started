@@ -6,5 +6,6 @@ export interface Product {
     description: string,
     price: number
     starRating: number
-    imageUrl: string
+    imageUrl: string,
+    imageThumbnailUrl: string
 }

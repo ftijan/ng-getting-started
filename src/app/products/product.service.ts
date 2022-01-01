@@ -14,9 +14,14 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productUrl).pipe(
-      tap(data => console.log("All: ", JSON.stringify(data))),
+      tap(this.debugData),
       catchError(this.handleError)
     );
+  }
+
+  debugData(data: Product[]) {
+    // Uncomment to debug:
+    //console.log("getProducts: ", JSON.stringify(data));
   }
 
   getProduct(id: number): Observable<Product> {    
