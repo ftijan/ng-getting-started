@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ng-getting-started'`, () => {
+  it(`should have as title 'Acme Product Management'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ng-getting-started');
+    expect(app.pageTitle).toEqual('Acme Product Management');
   });
-
+  
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('ng-getting-started app is running!');
+    const compiled = fixture.nativeElement as HTMLElement;    
+    expect(compiled.querySelector('a.navbar-brand')?.textContent).toContain('Acme Product Management');
   });
 });

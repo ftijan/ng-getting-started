@@ -1,0 +1,11 @@
+.crop {
+    overflow: hidden;
+}
+
+.crop > div {
+    width: 75px;
+}
+
+div {
+    cursor: pointer;
+}
