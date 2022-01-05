@@ -31,6 +31,18 @@ export class ProductService {
       );    
   }
 
+  createProduct(product: Product): Observable<Product> {
+    throw new Error('Not implemented.');    
+  }
+
+  updateProduct(product: Product): Observable<Product> {
+    throw new Error('Not implemented.');    
+  }
+
+  deleteProduct(productId: number): Observable<Product> {
+    throw new Error('Not implemented.');    
+  }
+
   private handleError(err: HttpErrorResponse) {
     // client-side vs server error:
     const errorMessage = err.error instanceof ErrorEvent ?
