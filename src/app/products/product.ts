@@ -7,5 +7,6 @@ export interface Product {
     price: number
     starRating: number
     imageUrl: string,
-    imageThumbnailUrl: string
+    imageThumbnailUrl: string,
+    tags?: string[];
 }
