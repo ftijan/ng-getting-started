@@ -8,7 +8,8 @@
     "price": 19.95,
     "starRating": 3.2,
     "imageUrl": "assets/images/placeholder_lg.png",
-    "imageThumbnailUrl": "assets/images/placeholder_sm.png"
+    "imageThumbnailUrl": "assets/images/placeholder_sm.png",
+    "tags": ["tool"]
   },
   {
     "productId": 2,
@@ -19,7 +20,8 @@
     "price": 32.99,
     "starRating": 4.2,
     "imageUrl": "assets/images/placeholder_lg.png",
-    "imageThumbnailUrl": "assets/images/placeholder_sm.png"
+    "imageThumbnailUrl": "assets/images/placeholder_sm.png",
+    "tags": ["tool"]
   },
   {
     "productId": 5,
@@ -30,7 +32,8 @@
     "price": 8.9,
     "starRating": 4.8,
     "imageUrl": "assets/images/placeholder_lg.png",
-    "imageThumbnailUrl": "assets/images/placeholder_sm.png"
+    "imageThumbnailUrl": "assets/images/placeholder_sm.png",
+    "tags": ["tool"]
   },
   {
     "productId": 8,
@@ -41,7 +44,8 @@
     "price": 11.55,
     "starRating": 3.7,
     "imageUrl": "assets/images/placeholder_lg.png",
-    "imageThumbnailUrl": "assets/images/placeholder_sm.png"
+    "imageThumbnailUrl": "assets/images/placeholder_sm.png",
+    "tags": ["tool"]
   },
   {
     "productId": 10,
@@ -52,6 +56,7 @@
     "price": 35.95,
     "starRating": 4.6,
     "imageUrl": "assets/images/placeholder_lg.png",
-    "imageThumbnailUrl": "assets/images/placeholder_sm.png"
+    "imageThumbnailUrl": "assets/images/placeholder_sm.png",
+    "tags": ["controller"]
   }
 ]

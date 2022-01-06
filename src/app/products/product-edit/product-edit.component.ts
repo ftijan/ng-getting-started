@@ -7,6 +7,7 @@ import { debounceTime } from 'rxjs/operators';
 
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { GenericValidator } from '../generic-validator';
 
 @Component({
   templateUrl: './product-edit.component.html'
@@ -15,7 +16,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[] | undefined;
 
   pageTitle = 'Product Edit';
-  errorMessage: string | undefined;
+  errorMessage: string = '';
   productForm: FormGroup = new FormGroup({});
 
   product: Product | undefined;
@@ -23,9 +24,8 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Use with the generic validation message class
   displayMessage: { [key: string]: string } = {};
-  private validationMessages: { [key: string]: { [key: string]: string } };
-  // TODO
-  //private genericValidator: GenericValidator;
+  private validationMessages: { [key: string]: { [key: string]: string } };  
+  private genericValidator: GenericValidator;
 
   get tags(): FormArray {
     return this.productForm?.get('tags') as FormArray;
@@ -48,14 +48,14 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
         required: 'Product code is required.'
       },
       starRating: {
-        range: 'Rate the product between 1 (lowest) and 5 (highest).'
+        min: 'Minimum product rating should be 1.',
+        max: 'Maximum product rating should be 5.'        
       }
     };
 
     // Define an instance of the validator for use with this form,
-    // passing in this form's set of validation messages.
-    // TODO
-    //this.genericValidator = new GenericValidator(this.validationMessages);
+    // passing in this form's set of validation messages.    
+    this.genericValidator = new GenericValidator(this.validationMessages);
   }
 
   ngOnInit(): void {
@@ -72,7 +72,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
     // Read the product Id from the route parameter
     this.sub = this.route.paramMap.subscribe(
       params => {
-        const id = +(params?.get('id') || 0);
+        const id = +params.get('id')!;
         this.getProduct(id);
       }
     );
@@ -84,7 +84,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     // Watch for the blur event from any input element on the form.
-    // This is required because the valueChanges does not provide notification on blur
+    // This is required because the valueChanges does not provide notification on blur    
     const controlBlurs: Observable<any>[] = 
     this.formInputElements?.map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'))
     ||  [ of()];
@@ -93,9 +93,8 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
     // so we only need to subscribe once.
     merge(this.productForm?.valueChanges, ...controlBlurs).pipe(
       debounceTime(800)
-    ).subscribe(value => {
-      // TODO
-      //this.displayMessage = this.genericValidator.processMessages(this.productForm);
+    ).subscribe(value => {      
+      this.displayMessage = this.genericValidator.processMessages(this.productForm);
     });
   }
 

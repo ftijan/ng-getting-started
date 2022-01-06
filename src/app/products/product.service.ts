@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, mergeMap, first  } from 'rxjs/operators';
 import { Product } from './product';
 
@@ -32,15 +32,18 @@ export class ProductService {
   }
 
   createProduct(product: Product): Observable<Product> {
-    throw new Error('Not implemented.');    
+    // mock
+    return of(product);
   }
 
   updateProduct(product: Product): Observable<Product> {
-    throw new Error('Not implemented.');    
+    // mock
+    return of(product);
   }
 
-  deleteProduct(productId: number): Observable<Product> {
-    throw new Error('Not implemented.');    
+  deleteProduct(productId: number): Observable<{}> {
+    // mock
+    return of({});
   }
 
   private handleError(err: HttpErrorResponse) {
