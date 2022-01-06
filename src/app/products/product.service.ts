@@ -24,7 +24,11 @@ export class ProductService {
     //console.log("getProducts: ", JSON.stringify(data));
   }
 
-  getProduct(id: number): Observable<Product> {    
+  getProduct(id: number): Observable<Product> {
+    if (id === 0) {
+      return of(this.initializeProduct());
+    }
+        
     return this.getProducts().pipe(     
       mergeMap(p => p),
       first(product => product.productId === id)
@@ -54,5 +58,21 @@ export class ProductService {
 
     console.log(errorMessage);    
     return throwError(() => new Error(errorMessage));
+  }
+
+  private initializeProduct(): Product {
+    // Return an initialized object
+    return {
+      productId: 0,
+      productName: '',
+      productCode: '',
+      tags: [''],
+      releaseDate: '',
+      price: 0,
+      description: '',
+      starRating: 0,
+      imageUrl: '',
+      imageThumbnailUrl: ''
+    };
   }
 }
